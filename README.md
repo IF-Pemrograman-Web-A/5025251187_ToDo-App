@@ -1,7 +1,7 @@
 # Todo App - Pemrograman Web A
 
 ## Identitas
-- **Nama:** Farrel
+- **Nama:** Farrel Rizqi Pangestu
 - **NRP:** 5025251187
 - **Kelas:** IF - Pemrograman Web - A
 
