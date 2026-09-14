@@ -6,6 +6,6 @@
 - **Kelas:** IF - Pemrograman Web - A
 
 ## Deskripsi
-**Tugas 1A** (Website To-do list menggunakan HTML semantik, Flexbox untuk layout dua panel, dan data dummy statis berupa tugas kuliah.
+**Tugas 1A** (Website To-do list menggunakan HTML semantik, Flexbox untuk layout dua panel, dan data dummy statis berupa tugas kuliah.)
 
 ## Preview Tampilan
