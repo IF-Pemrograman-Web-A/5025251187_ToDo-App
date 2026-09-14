@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List Webpage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Farrel's ToDo App</h1>
+    </header>
+
+    <div class="layout-container">
+        <main>
+            <section class="todo-list-container">
+                <h2>Task List</h2>
+                <ul class="todo-list">
+                    <li>
+                        <div class="todo-item">
+                            <input type="checkbox" id="todo1">
+                            <label for="todo1">Kerjain tugas Pemrograman Web minggu 3</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="todo-item">
+                            <input type="checkbox" id="todo2" checked>
+                            <label for="todo2">Baca materi Struktur Data buat minggu depan</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="todo-item">
+                            <input type="checkbox" id="todo3">
+                            <label for="todo3">Submit laporan praktikum Sistem Operasi</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="todo-item">
+                            <input type="checkbox" id="todo4">
+                            <label for="todo4">Push project ke GitHub sebelum deadline</label>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </main>
+
+        <aside>
+            <section class="todo-detail-container">
+                <h2>Task Details</h2>
+                <div class="detail-card">
+                    <h3>Baca materi Struktur Data buat minggu depan</h3>
+                    <p class="status"><strong>Status:</strong> Completed</p>
+                    <p class="due-date"><strong>Due:</strong> Kemarin</p>
+                    <p class="description">Review materi tentang linked list dan tree, siap-siap buat kuis minggu depan.</p>
+                </div>
+            </section>
+
+            <section class="todo-form-container">
+                <h2>Create New Task</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" id="title" name="title" placeholder="Enter task title...">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea id="description" name="description" placeholder="Enter task details..."></textarea>
+                    </div>
+                    <button type="button">Add Todo</button>
+                </form>
+            </section>
+        </aside>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Farrel - Todo List</p>
+    </footer>
+</body>
+</html>
