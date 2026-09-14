@@ -9,3 +9,5 @@
 **Tugas 1A** (Website To-do list menggunakan HTML semantik, Flexbox untuk layout dua panel, dan data dummy statis berupa tugas kuliah.)
 
 ## Preview Tampilan
+- <img width="1902" height="910" alt="Screenshot 2026-09-14 175402" src="https://github.com/user-attachments/assets/b40d7886-9210-4127-a16e-7bca1cb71d3d" />
+- <img width="1903" height="909" alt="Screenshot 2026-09-14 175436" src="https://github.com/user-attachments/assets/ab7dd3a4-e39b-4865-b015-9310778665d6" />
