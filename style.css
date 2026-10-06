@@ -263,3 +263,8 @@ body {
     margin-top: 30px;
     transition: background-color 0.3s;
 }
+
+.task-title input[type="checkbox"] {
+    pointer-events: none;
+    cursor: default;
+}
