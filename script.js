@@ -106,6 +106,7 @@ function renderTasks() {
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.checked = task.done;
+        checkbox.disabled = true;
         checkbox.tabIndex = -1;
         checkbox.setAttribute('aria-label', 'Status selesai');
 
