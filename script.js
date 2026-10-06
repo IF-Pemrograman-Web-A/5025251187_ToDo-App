@@ -163,6 +163,8 @@ todoList.addEventListener('click', function (event) {
 
     const id = Number(button.closest('.task').dataset.id);
     const task = findTask(id);
+    if (!task) return;
+    
     const action = button.dataset.action;
 
     if (action === 'select') {
