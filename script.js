@@ -1,40 +1,7 @@
 const state = {
-    tasks: [
-        {
-            id: 1,
-            title: 'KKA - Uninformed Search',
-            tag: 'KKA',
-            deadline: '2026-09-15',
-            description: 'Lengkapnya lihat di ITS Classroom.',
-            done: true
-        },
-        {
-            id: 2,
-            title: 'Tegraf - Tugas 3',
-            tag: 'Tegraf',
-            deadline: '2026-10-06',
-            description: 'Lengkapnya lihat di ITS Classroom.',
-            done: false
-        },
-        {
-            id: 3,
-            title: 'Matdis - Tugas 2',
-            tag: 'Matdis',
-            deadline: '2026-09-20',
-            description: 'Lengkapnya lihat di ITS Classroom.',
-            done: true
-        },
-        {
-            id: 4,
-            title: 'KCV - Pelajarin buat FPFPFPP',
-            tag: 'KCV',
-            deadline: '2026-09-25',
-            description: 'Lihat Grup KCV.',
-            done: false
-        }
-    ],
-    nextId: 5,
-    selectedId: 1,
+    tasks: [],
+    nextId: 1,
+    selectedId: null,
     editingId: null
 };
 
