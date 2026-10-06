@@ -6,15 +6,15 @@ const state = {
             tag: 'KKA',
             deadline: '2026-09-15',
             description: 'Lengkapnya lihat di ITS Classroom.',
-            done: false
+            done: true
         },
         {
             id: 2,
-            title: 'Matdis - Tugas 1',
-            tag: 'Matdis',
-            deadline: '2026-09-13',
+            title: 'Tegraf - Tugas 3',
+            tag: 'Tegraf',
+            deadline: '2026-10-06',
             description: 'Lengkapnya lihat di ITS Classroom.',
-            done: true
+            done: false
         },
         {
             id: 3,
@@ -22,15 +22,15 @@ const state = {
             tag: 'Matdis',
             deadline: '2026-09-20',
             description: 'Lengkapnya lihat di ITS Classroom.',
-            done: false
+            done: true
         },
         {
             id: 4,
-            title: 'KCV - Buat AI Engine (lanjutkan & selesaikan Notebook)',
+            title: 'KCV - Pelajarin buat FPFPFPP',
             tag: 'KCV',
-            deadline: '2026-09-13',
-            description: 'Lanjutkan dan selesaikan Notebook.',
-            done: true
+            deadline: '2026-09-25',
+            description: 'Lihat Grup KCV.',
+            done: false
         }
     ],
     nextId: 5,
