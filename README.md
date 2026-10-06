@@ -7,7 +7,7 @@
 
 ## Deskripsi
 
-Website To-do list menggunakan HTML sederhana, Flexbox untuk layout dua panel, dan data dummy statis berupa tugas kuliah.
+Website To-do list menggunakan HTML, CSS, dan JavaScript, dengan Flexbox untuk layout dua panel, dan data dummy statis berupa tugas kuliah.
 
 ## Struktur Website
 **1. Header**
@@ -29,6 +29,10 @@ Form di sisi kanan bawah untuk menambahkan tugas baru, terdiri dari input Title,
 **5. Footer**
 
 Bagian paling bawah yang menampilkan identitas pembuat dan keterangan tugas.
+
+**6. Toggle Light/Dark Mode**
+
+Komponen di ujung kanan atas yang dapat mengubah tampilan antarmuka antara mode terang dan mode gelap. background dan elemen tampilan berubah menjadi warna gelap/terang, sesuai preferensi pengguna.
 
 ## Desktop Preview
 <img width="1902" height="910" alt="Screenshot 2026-09-14 175402" src="https://github.com/user-attachments/assets/b40d7886-9210-4127-a16e-7bca1cb71d3d" />
