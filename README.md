@@ -35,8 +35,7 @@ Bagian paling bawah yang menampilkan identitas pembuat dan keterangan tugas.
 Komponen di ujung kanan atas yang dapat mengubah tampilan antarmuka antara mode terang dan mode gelap. background dan elemen tampilan berubah menjadi warna gelap/terang, sesuai preferensi pengguna.
 
 ## Desktop Preview
-<img width="1902" height="910" alt="Screenshot 2026-09-14 175402" src="https://github.com/user-attachments/assets/b40d7886-9210-4127-a16e-7bca1cb71d3d" />
-<img width="1903" height="909" alt="Screenshot 2026-09-14 175436" src="https://github.com/user-attachments/assets/ab7dd3a4-e39b-4865-b015-9310778665d6" />
+a
 
 ## Mobile Preview
-<img width="1170" height="2532" alt="index html(iPhone 12 Pro)" src="https://github.com/user-attachments/assets/3d024be9-5036-4d1b-8edd-f11a37203078" />
+a
