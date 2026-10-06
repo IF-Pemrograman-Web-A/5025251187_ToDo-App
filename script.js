@@ -1,17 +1,3 @@
-/* =========================================================
-   TODO APP - script.js
-   Isi file ini:
-   1. Data (disimpan sebagai object)
-   2. Fungsi bantu
-   3. Fungsi untuk menampilkan (render) data ke halaman
-   4. Event handler (klik, submit, dll)
-   ========================================================= */
-
-
-/* ---------- 1. DATA ----------
-   Semua data disimpan dalam satu object bernama "state".
-   Data ini hanya ada di memori, jadi kalau halaman di-refresh,
-   data otomatis kembali ke kondisi awal (default) di bawah ini. */
 const state = {
     tasks: [
         {
@@ -47,13 +33,12 @@ const state = {
             done: true
         }
     ],
-    nextId: 5,          // id untuk tugas baru berikutnya
-    selectedId: 1,      // tugas yang sedang ditampilkan di Task Details
-    editingId: null     // null = sedang tidak edit, angka = id tugas yang diedit
+    nextId: 5,
+    selectedId: 1,
+    editingId: null
 };
 
 
-/* ---------- Ambil elemen dari HTML ---------- */
 const todoList     = document.getElementById('todo-list');
 const taskDetail   = document.getElementById('task-detail');
 const todoForm     = document.getElementById('todo-form');
@@ -68,10 +53,6 @@ const deadlineInput    = document.getElementById('deadline');
 const descriptionInput = document.getElementById('description');
 
 
-/* ---------- 2. FUNGSI BANTU ---------- */
-
-// Membuat elemen HTML baru: createEl('p', 'nama-class', 'isi teks')
-// Pakai textContent (bukan innerHTML) supaya input user aman.
 function createEl(tagName, className, text) {
     const element = document.createElement(tagName);
     if (className) element.className = className;
@@ -79,41 +60,35 @@ function createEl(tagName, className, text) {
     return element;
 }
 
-// Mengubah '2026-09-15' menjadi '15 Sep 2026' (atau '15 September 2026' kalau full = true)
 function formatDate(isoDate, full) {
     if (!isoDate) return 'Tanpa deadline';
 
     const shortMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
     const fullMonths  = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
 
-    const parts = isoDate.split('-');           // ['2026', '09', '15']
+    const parts = isoDate.split('-');
     const year  = parts[0];
-    const month = Number(parts[1]) - 1;         // bulan di array mulai dari 0
+    const month = Number(parts[1]) - 1;
     const day   = Number(parts[2]);
 
     return day + ' ' + (full ? fullMonths[month] : shortMonths[month]) + ' ' + year;
 }
 
-// Cari tugas berdasarkan id
 function findTask(id) {
     return state.tasks.find(function (task) {
         return task.id === id;
     });
 }
-
-// Buat satu tombol kecil di dalam baris tugas
 function createActionButton(label, action, extraClass) {
     const button = createEl('button', 'btn-small ' + extraClass, label);
     button.type = 'button';
-    button.dataset.action = action;     // dibaca oleh event handler di bawah
+    button.dataset.action = action;
     return button;
 }
 
 
-/* ---------- 3. RENDER (menampilkan data ke halaman) ---------- */
-
 function renderTasks() {
-    todoList.innerHTML = '';    // kosongkan dulu, lalu isi ulang
+    todoList.innerHTML = '';
 
     if (state.tasks.length === 0) {
         todoList.appendChild(createEl('li', 'empty-message', 'Belum ada tugas. Tambahkan lewat form di samping.'));
@@ -126,13 +101,12 @@ function renderTasks() {
         if (task.done) item.classList.add('done');
         if (task.id === state.selectedId) item.classList.add('selected');
 
-        // Baris atas: checkbox (hanya tampilan) + judul tugas
         const titleRow = createEl('div', 'task-title');
 
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.checked = task.done;
-        checkbox.tabIndex = -1;                    // tidak bisa difokus / diklik langsung
+        checkbox.tabIndex = -1;
         checkbox.setAttribute('aria-label', 'Status selesai');
 
         const name = createEl('button', 'task-name', task.title);
@@ -142,12 +116,10 @@ function renderTasks() {
         titleRow.appendChild(checkbox);
         titleRow.appendChild(name);
 
-        // Baris bawah: tag + deadline
         const meta = createEl('div', 'task-meta');
         if (task.tag) meta.appendChild(createEl('span', 'tag', task.tag));
         meta.appendChild(createEl('span', '', 'Deadline: ' + formatDate(task.deadline, false)));
 
-        // Tombol aksi: Mark as Done, Edit, Delete
         const actions = createEl('div', 'task-actions');
         actions.appendChild(createActionButton(task.done ? 'Mark as Undone' : 'Mark as Done', 'toggle', 'btn-done'));
         actions.appendChild(createActionButton('Edit', 'edit', 'btn-edit'));
@@ -185,14 +157,11 @@ function renderDetail() {
     taskDetail.appendChild(card);
 }
 
-// Tampilkan ulang semua bagian
 function renderAll() {
     renderTasks();
     renderDetail();
 }
 
-
-/* ---------- Mode form: tambah / edit ---------- */
 
 function resetForm() {
     state.editingId = null;
@@ -216,11 +185,6 @@ function startEdit(task) {
 }
 
 
-/* ---------- 4. EVENT HANDLER ---------- */
-
-// (a) Klik di dalam daftar tugas.
-// Satu listener di <ul> untuk semua tombol (disebut event delegation),
-// jadi tugas baru yang ditambah nanti otomatis ikut bekerja.
 todoList.addEventListener('click', function (event) {
     const button = event.target.closest('[data-action]');
     if (!button) return;
@@ -234,7 +198,7 @@ todoList.addEventListener('click', function (event) {
     }
 
     if (action === 'toggle') {
-        task.done = !task.done;         // ubah status -> checkbox & coretan ikut berubah
+        task.done = !task.done;
     }
 
     if (action === 'edit') {
@@ -259,9 +223,8 @@ todoList.addEventListener('click', function (event) {
     renderAll();
 });
 
-// (b) Form di-submit: tambah tugas baru, atau simpan hasil edit
 todoForm.addEventListener('submit', function (event) {
-    event.preventDefault();             // cegah halaman reload
+    event.preventDefault();
 
     const title = titleInput.value.trim();
     if (title === '') {
@@ -270,7 +233,6 @@ todoForm.addEventListener('submit', function (event) {
     }
 
     if (state.editingId !== null) {
-        // Mode edit: update tugas yang sudah ada
         const task = findTask(state.editingId);
         task.title = title;
         task.tag = tagInput.value.trim();
@@ -278,7 +240,6 @@ todoForm.addEventListener('submit', function (event) {
         task.description = descriptionInput.value.trim();
         state.selectedId = task.id;
     } else {
-        // Mode tambah: buat object tugas baru
         const newTask = {
             id: state.nextId,
             title: title,
@@ -296,15 +257,11 @@ todoForm.addEventListener('submit', function (event) {
     renderAll();
 });
 
-// (c) Tombol Cancel saat edit
 cancelBtn.addEventListener('click', resetForm);
 
-// (d) Tombol Light / Dark mode: toggle class "dark-mode" di <body>
 themeToggle.addEventListener('click', function () {
     const isDark = document.body.classList.toggle('dark-mode');
     themeToggle.textContent = isDark ? 'Light Mode' : 'Dark Mode';
 });
 
-
-/* ---------- Jalankan pertama kali ---------- */
 renderAll();
