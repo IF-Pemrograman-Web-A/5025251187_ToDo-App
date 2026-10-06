@@ -33,12 +33,15 @@ function formatDate(isoDate, full) {
     const shortMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
     const fullMonths  = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
 
-    const parts = isoDate.split('-');
-    const year  = parts[0];
-    const month = Number(parts[1]) - 1;
-    const day   = Number(parts[2]);
-
-    return day + ' ' + (full ? fullMonths[month] : shortMonths[month]) + ' ' + year;
+    if (isoDate.includes('/')) {
+        const parts = isoDate.split('/');
+        if (parts.length === 3) {
+            const day   = Number(parts[0]);
+            const month = Number(parts[1]) - 1;
+            const year  = parts[2];
+            return day + ' ' + (full ? fullMonths[month] : shortMonths[month]) + ' ' + year;
+    }
+    return isoDate;
 }
 
 function findTask(id) {
