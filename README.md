@@ -1,12 +1,34 @@
 # Todo App - Pemrograman Web A
 
 ## Identitas
-- **Nama:** Farrel Rizqi Pangestu
-- **NRP:** 5025251187
-- **Kelas:** IF - Pemrograman Web - A
+| Name           | NRP        |
+| ------         | -----      |
+| Farrel Rizqi Pangestu | 5025251187 |
 
 ## Deskripsi
-**Tugas E01A** (Website To-do list menggunakan HTML sederhana, Flexbox untuk layout dua panel, dan data dummy statis berupa tugas kuliah.)
+
+Website To-do list menggunakan HTML sederhana, Flexbox untuk layout dua panel, dan data dummy statis berupa tugas kuliah.
+
+## Struktur Website
+**1. Header**
+
+Bagian paling atas website yang menampilkan judul aplikasi.
+
+**2. Task List (Daftar Tugas)**
+
+Komponen di sisi kiri yang menampilkan daftar tugas kuliah, masing-masing dengan checkbox, tag mata kuliah (KKA/Matdis/Tegraf), deadline, dan tombol "Mark as Done".
+
+**3. Task Details (Detail Tugas)**
+
+Komponen di sisi kanan atas yang menampilkan detail tugas-tugas yang deadline-nya masih mendatang: nama tugas, tag, status, due date, dan deskripsi singkat.
+
+**4. Create New Task (Form Tambah Tugas)**
+
+Form di sisi kanan bawah untuk menambahkan tugas baru, terdiri dari input Title, Tag, Deadline, dan Description.
+
+**5. Footer**
+
+Bagian paling bawah yang menampilkan identitas pembuat dan keterangan tugas.
 
 ## Desktop Preview
 <img width="1902" height="910" alt="Screenshot 2026-09-14 175402" src="https://github.com/user-attachments/assets/b40d7886-9210-4127-a16e-7bca1cb71d3d" />
