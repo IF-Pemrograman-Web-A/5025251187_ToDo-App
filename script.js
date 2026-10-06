@@ -45,6 +45,8 @@ function findTask(id) {
         return task.id === id;
     });
 }
+
+
 function createActionButton(label, action, extraClass) {
     const button = createEl('button', 'btn-small ' + extraClass, label);
     button.type = 'button';
@@ -99,6 +101,7 @@ function renderTasks() {
     });
 }
 
+
 function renderDetail() {
     taskDetail.innerHTML = '';
     const task = findTask(state.selectedId);
@@ -124,6 +127,7 @@ function renderDetail() {
     taskDetail.appendChild(card);
 }
 
+
 function renderAll() {
     renderTasks();
     renderDetail();
@@ -137,6 +141,7 @@ function resetForm() {
     submitBtn.textContent = 'Add Todo';
     cancelBtn.hidden = true;
 }
+
 
 function startEdit(task) {
     state.editingId = task.id;
@@ -190,6 +195,7 @@ todoList.addEventListener('click', function (event) {
     renderAll();
 });
 
+
 todoForm.addEventListener('submit', function (event) {
     event.preventDefault();
 
@@ -224,11 +230,14 @@ todoForm.addEventListener('submit', function (event) {
     renderAll();
 });
 
+
 cancelBtn.addEventListener('click', resetForm);
+
 
 themeToggle.addEventListener('click', function () {
     const isDark = document.body.classList.toggle('dark-mode');
     themeToggle.textContent = isDark ? 'Light Mode' : 'Dark Mode';
 });
+
 
 renderAll();
