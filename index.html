@@ -3,65 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo List Webpage</title>
+    <title>Farrel's ToDo Webpage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Farrel's ToDo Webpage</h1>
+    <header class="site-header">
+        <h1>My To Do Webpage</h1>
     </header>
 
     <div class="layout-container">
         <main>
-            <section class="todo-list-container">
+            <section class="panel todo-detail-container">
+                <h2>Task Details</h2>
+                <div class="detail-grid">
+                    <article class="detail-card">
+                        <h3>KKA - Uninformed Search</h3>
+                        <dl>
+                            <dt>Tag</dt>
+                            <dd>KKA</dd>
+                            <dt>Status</dt>
+                            <dd>Belum selesai</dd>
+                            <dt>Due</dt>
+                            <dd><time datetime="2026-09-15T23:59">15 September 2026, 23:59</time></dd>
+                        </dl>
+                        <p class="description">Lengkapnya lihat di ITS Classroom.</p>
+                    </article>
+                    <article class="detail-card">
+                        <h3>Matdis - Tugas 2</h3>
+                        <dl>
+                            <dt>Tag</dt>
+                            <dd>Matdis</dd>
+                            <dt>Status</dt>
+                            <dd>Belum selesai</dd>
+                            <dt>Due</dt>
+                            <dd><time datetime="2026-09-20T23:59">20 September 2026, 23:59</time></dd>
+                        </dl>
+                        <p class="description">Lengkapnya lihat di ITS Classroom.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="panel todo-list-container">
                 <h2>Task List</h2>
                 <ul class="todo-list">
-                    <li>
-                        <div class="todo-item">
+                    <li class="task">
+                        <div class="task-title">
                             <input type="checkbox" id="todo1">
-                            <label for="todo1">KKA - Uninformed Search (deadline 15 Sept 2026, 23:59)</label>
+                            <label for="todo1">KKA - Uninformed Search</label>
                         </div>
+                        <div class="task-meta">
+                            <span class="tag tag-kka">KKA</span>
+                            <span>Deadline: <time datetime="2026-09-15T23:59">15 Sept 2026, 23:59</time></span>
+                        </div>
+                        <button type="button" class="btn btn-done">Mark as Done</button>
                     </li>
-                    <li>
-                        <div class="todo-item">
+                    <li class="task">
+                        <div class="task-title">
                             <input type="checkbox" id="todo2" checked>
-                            <label for="todo2">Matdis - Tugas 1 (lihat ITS Classroom)</label>
+                            <label for="todo2">Matdis - Tugas 1</label>
                         </div>
+                        <div class="task-meta">
+                            <span class="tag tag-matdis">Matdis</span>
+                            <span>Deadline: <time datetime="2026-09-13T23:59">13 Sept 2026, 23:59</time></span>
+                        </div>
+                        <button type="button" class="btn btn-done">Mark as Done</button>
                     </li>
-                    <li>
-                        <div class="todo-item">
+                    <li class="task">
+                        <div class="task-title">
                             <input type="checkbox" id="todo3">
-                            <label for="todo3">Matdis - Tugas 2 (lihat ITS Classroom)</label>
+                            <label for="todo3">Matdis - Tugas 2</label>
                         </div>
+                        <div class="task-meta">
+                            <span class="tag tag-matdis">Matdis</span>
+                            <span>Deadline: <time datetime="2026-09-20T23:59">20 Sept 2026, 23:59</time></span>
+                        </div>
+                        <button type="button" class="btn btn-done">Mark as Done</button>
                     </li>
-                    <li>
-                        <div class="todo-item">
+                    <li class="task">
+                        <div class="task-title">
                             <input type="checkbox" id="todo4" checked>
                             <label for="todo4">KCV - Buat AI Engine (lanjutkan &amp; selesaikan Notebook)</label>
                         </div>
+                        <div class="task-meta">
+                            <span class="tag tag-kcv">KCV</span>
+                            <span>Deadline: <time datetime="2026-09-13T23:59">13 Sept 2026, 23:59</time></span>
+                        </div>
+                        <button type="button" class="btn btn-done">Mark as Done</button>
                     </li>
                 </ul>
             </section>
         </main>
 
         <aside>
-            <section class="todo-detail-container">
-                <h2>Task Details</h2>
-                <div class="detail-card">
-                    <h3>KKA - Uninformed Search</h3>
-                    <p class="status"><strong>Status:</strong> Belum selesai</p>
-                    <p class="due-date"><strong>Due:</strong> 15 September 2026, 23:59</p>
-                    <p class="description">Lengkapnya lihat di ITS Classroom.</p>
-                </div>
-                <div class="detail-card">
-                    <h3>Matdis - Tugas 2</h3>
-                    <p class="status"><strong>Status:</strong> Belum selesai</p>
-                    <p class="due-date"><strong>Due:</strong> 20 September 2026, 23:59</p>
-                    <p class="description">Lengkapnya lihat di ITS Classroom.</p>
-                </div>
-            </section>
-
-            <section class="todo-form-container">
+            <section class="panel todo-form-container">
                 <h2>Create New Task</h2>
                 <form>
                     <div class="form-group">
@@ -69,17 +106,26 @@
                         <input type="text" id="title" name="title" placeholder="Enter task title...">
                     </div>
                     <div class="form-group">
+                        <label for="tag">Tag</label>
+                        <input type="text" id="tag" name="tag" placeholder="Contoh: KKA, Matdis, KCV...">
+                    </div>
+                    <div class="form-group">
+                        <label for="deadline">Deadline</label>
+                        <input type="date" id="deadline" name="deadline">
+                    </div>
+                    <div class="form-group">
                         <label for="description">Description</label>
                         <textarea id="description" name="description" placeholder="Enter task details..."></textarea>
                     </div>
-                    <button type="button">Add Todo</button>
+                    <button type="button" class="btn btn-add">Add Todo</button>
                 </form>
             </section>
         </aside>
     </div>
 
-    <footer>
-        <p>&copy; 2026 Farrel - Todo List</p>
+    <footer class="site-footer">
+        <p>Made by: <strong>Farrel Rizqi Pangestu / 5025251187</strong></p>
+        <p>For: <strong>Pemrograman Web A - Tugas E01a</strong></p>
     </footer>
 </body>
 </html>
