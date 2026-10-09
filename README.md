@@ -35,12 +35,12 @@ Bagian paling bawah yang menampilkan identitas pembuat dan keterangan tugas.
 Komponen di ujung kanan atas yang dapat mengubah tampilan antarmuka antara mode terang dan mode gelap. background dan elemen tampilan berubah menjadi warna gelap/terang, sesuai preferensi pengguna.
 
 ## Desktop Preview
-- Light Mode
-<img width="964" height="605" alt="image" src="https://github.com/user-attachments/assets/f455f596-6f0b-4d0d-844b-7eb987043d81" />
+- <img width="1919" height="988" alt="image" src="https://github.com/user-attachments/assets/dc818c6b-2b49-438c-bfb1-7cabd3a0e16f" />
+- <img width="1919" height="987" alt="image" src="https://github.com/user-attachments/assets/745805f9-e717-4fe3-aae8-921e37315ef9" />
 
-- Dark Mode
-<img width="966" height="606" alt="image" src="https://github.com/user-attachments/assets/41943330-1610-49ad-9133-18d335eabeff" />
 
 ## Mobile Preview
-- <img width="335" height="724" alt="image" src="https://github.com/user-attachments/assets/9152e538-238e-4325-afbe-5948411ab785" />
-- <img width="337" height="725" alt="image" src="https://github.com/user-attachments/assets/291ca752-96ea-463b-94db-261251ef340f" />
+- <img width="334" height="722" alt="image" src="https://github.com/user-attachments/assets/00e9e21b-6be2-4bdf-aaf6-3d167e828a19" />
+
+## Setelah di-Refresh
+- <img width="1918" height="984" alt="image" src="https://github.com/user-attachments/assets/c48119c1-fe54-44b5-9640-a33ba5aae7f2" />
