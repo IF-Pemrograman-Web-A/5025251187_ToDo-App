@@ -7,7 +7,7 @@
 
 ## Deskripsi
 
-Website To-do list menggunakan HTML, CSS, dan JavaScript, dengan Flexbox untuk layout dua panel, dan data dummy statis berupa tugas kuliah.
+Website To-do list tugas kuliah menggunakan HTML, CSS, dan JavaScript. Data tugas disimpan di IndexedDB, preferensi tema di localStorage, gambar tugas bisa diambil lewat kamera (Media Capture), pengingat memakai Service Worker, dan antarmuka dibuat accessible.
 
 ## Struktur Website
 **1. Header**
@@ -33,6 +33,22 @@ Bagian paling bawah yang menampilkan identitas pembuat dan keterangan tugas.
 **6. Toggle Light/Dark Mode**
 
 Komponen di ujung kanan atas yang dapat mengubah tampilan antarmuka antara mode terang dan mode gelap. background dan elemen tampilan berubah menjadi warna gelap/terang, sesuai preferensi pengguna.
+
+**7. Web Storage**
+
+Data to-do (termasuk gambar) disimpan di IndexedDB (todoAppDB), dan preferensi light/dark mode disimpan di localStorage (todo-theme). Data dan tema tetap ada setelah di-refresh.
+
+**8. Media Capture API**
+
+Field Image pada form dapat mengambil foto langsung lewat tombol Buka Kamera (getUserMedia) atau input file dengan atribut capture. Gambar ditampilkan di Task Details.
+
+**9. Service Worker**
+
+sw.js menyimpan app shell di cache agar bisa dibuka offline. Field Notification Time memunculkan notifikasi lewat service worker saat waktunya tiba (aplikasi harus terbuka dan izin notifikasi diberikan). Jalankan lewat localhost atau HTTPS.
+
+**10. Accessibility**
+
+Skip link, landmark dan heading terstruktur, label dan pesan error yang jelas, aria-label serta aria-live untuk pembaca layar, fokus keyboard yang terlihat, kontras warna sesuai WCAG AA, dan dukungan prefers-reduced-motion.
 
 ## Desktop Preview
 - <img width="1919" height="988" alt="image" src="https://github.com/user-attachments/assets/dc818c6b-2b49-438c-bfb1-7cabd3a0e16f" />
