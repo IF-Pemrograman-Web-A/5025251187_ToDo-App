@@ -236,7 +236,7 @@ function renderTasks() {
         if (task.tag) meta.appendChild(createEl('span', 'tag', task.tag));
         meta.appendChild(createEl('span', '', 'Deadline: ' + formatDate(task.deadline, false)));
         if (task.notifyAt) {
-            meta.appendChild(createEl('span', '', 'Pengingat: ' + formatDateTime(task.notifyAt, false)));
+            meta.appendChild(createEl('span', '', 'Reminder: ' + formatDateTime(task.notifyAt, false)));
         }
         if (task.image) {
             meta.appendChild(createEl('span', '', 'Ada gambar'));
@@ -285,7 +285,7 @@ function renderDetail() {
     list.appendChild(createEl('dd', '', task.done ? 'Selesai' : 'Belum selesai'));
     list.appendChild(createEl('dt', '', 'Due'));
     list.appendChild(createEl('dd', '', formatDate(task.deadline, true)));
-    list.appendChild(createEl('dt', '', 'Pengingat'));
+    list.appendChild(createEl('dt', '', 'Reminder'));
     list.appendChild(createEl('dd', '', task.notifyAt ? formatDateTime(task.notifyAt, true) : '-'));
     card.appendChild(list);
 
@@ -490,19 +490,24 @@ function updateNotifyButton() {
     notifyBtn.hidden = false;
 
     if (Notification.permission === 'granted') {
-        notifyBtn.textContent = 'Notifikasi Aktif';
+        notifyBtn.textContent = 'Notifications Enabled';
         notifyBtn.disabled = true;
     } else if (Notification.permission === 'denied') {
-        notifyBtn.textContent = 'Notifikasi Diblokir';
-        notifyBtn.disabled = true;
+        notifyBtn.textContent = 'Notifications Blocked';
+        notifyBtn.disabled = false;
     } else {
-        notifyBtn.textContent = 'Aktifkan Notifikasi';
+        notifyBtn.textContent = 'Enable Notifications';
         notifyBtn.disabled = false;
     }
 }
 
 async function requestNotificationPermission() {
     if (!notificationsSupported()) return;
+
+    if (Notification.permission === 'denied') {
+        alert('Notifications are blocked for this site. Klik lock icon di samping Address Bar, ubah setelan Notifikasi menjadi Allow (atau Reset Permission), lalu refresh halaman.');
+        return;
+    }
 
     try {
         await Notification.requestPermission();
@@ -520,7 +525,7 @@ async function showReminder(task) {
         ? 'Deadline: ' + formatDate(task.deadline, true)
         : 'Saatnya mengerjakan tugas ini.';
 
-    await registration.showNotification('Pengingat: ' + task.title, {
+    await registration.showNotification('Reminder: ' + task.title, {
         body: body,
         tag: 'todo-' + task.id,
         data: { id: task.id },
