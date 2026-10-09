@@ -39,6 +39,8 @@ function formatDate(isoDate, full) {
     const day   = Number(parts[2]);
 
     return day + ' ' + (full ? fullMonths[month] : shortMonths[month]) + ' ' + year;
+}
+
 
 function findTask(id) {
     return state.tasks.find(function (task) {
