@@ -16,7 +16,7 @@ Bagian paling atas website yang menampilkan judul aplikasi.
 
 **2. Task List (Daftar Tugas)**
 
-Komponen di sisi kiri yang menampilkan daftar tugas kuliah, masing-masing dengan checkbox, tag mata kuliah (KKA/Matdis/Tegraf), deadline, dan tombol "Mark as Done".
+Menampilkan daftar tugas dengan checkbox status, tag, deadline, serta tombol Mark as Done, Edit, dan Delete.
 
 **3. Task Details (Detail Tugas)**
 
@@ -24,7 +24,7 @@ Komponen di sisi kanan atas yang menampilkan detail tugas-tugas yang deadline-ny
 
 **4. Create New Task (Form Tambah Tugas)**
 
-Form di sisi kanan bawah untuk menambahkan tugas baru, terdiri dari input Title, Tag, Deadline, dan Description.
+Form untuk menambah tugas baru, atau mengedit tugas yang dipilih. Input diambil lewat JavaScript dan langsung tampil di list.
 
 **5. Footer**
 
