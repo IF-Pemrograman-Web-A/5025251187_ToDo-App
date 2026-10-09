@@ -7,7 +7,7 @@
 
 ## Deskripsi
 
-Website To-do list menggunakan HTML, CSS, dan JavaScript, dengan Flexbox untuk layout dua panel, dan data dummy statis berupa tugas kuliah.
+Website To-do list menggunakan HTML semantik, dengan Flexbox untuk layout dua panel, dan data dummy statis berupa tugas kuliah.
 
 ## Struktur Website
 **1. Header**
