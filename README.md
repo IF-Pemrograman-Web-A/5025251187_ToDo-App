@@ -74,9 +74,4 @@ Create, Read, Update, dan Delete dijalankan dengan PHP dan PDO (prepared stateme
 
 Gambar tugas diunggah lewat PHP (validasi tipe dan ukuran maks. 2 MB, nama file acak), disimpan di folder `uploads/`, dan ikut terhapus saat tugas dihapus atau gambarnya diganti.
 
-## Desktop Preview
-
-## Mobile Preview
-
-## Setelah di-Refresh
-- <img width="1918" height="984" alt="image" src="https://github.com/user-attachments/assets/c48119c1-fe54-44b5-9640-a33ba5aae7f2" />
+## Screenshots
