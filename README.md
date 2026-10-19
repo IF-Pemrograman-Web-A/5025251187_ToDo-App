@@ -74,4 +74,21 @@ Create, Read, Update, dan Delete dijalankan dengan PHP dan PDO (prepared stateme
 
 Gambar tugas diunggah lewat PHP (validasi tipe dan ukuran maks. 2 MB, nama file acak), disimpan di folder `uploads/`, dan ikut terhapus saat tugas dihapus atau gambarnya diganti.
 
-## Screenshots
+## Desktop Preview
+- Light Mode
+<img width="1919" height="1031" alt="image" src="https://github.com/user-attachments/assets/4f170a7d-5862-4a1b-8db6-0cccdc9e8e30" />
+
+- Dark Mode
+<img width="1919" height="1031" alt="image" src="https://github.com/user-attachments/assets/5ad4aa6d-21df-464a-a37d-39dde7ecd131" />
+
+## Mobile Preview (Dark Mode)
+<img width="335" height="723" alt="image" src="https://github.com/user-attachments/assets/02fa0b06-e31c-45a7-9af1-534b18415142" />
+
+<img width="337" height="725" alt="image" src="https://github.com/user-attachments/assets/e9205bc4-e5d6-434e-9686-b6d424494b44" />
+
+## Other Screenshots
+- Dapat mengubah pengguna
+<img width="465" height="389" alt="image" src="https://github.com/user-attachments/assets/48ebe193-801f-4c62-91e6-5157c5283679" />
+
+- Serta menambahkan ToDo
+<img width="1385" height="428" alt="image" src="https://github.com/user-attachments/assets/b3af7a6e-150b-4665-85dd-b4d32eb7d20e" />
