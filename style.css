@@ -56,7 +56,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
+    max-width: 1400px;
     width: 100%;
     margin: 20px auto;
     padding: 0 20px;
@@ -77,18 +77,30 @@ body {
     background-color: var(--primary-hover);
 }
 
-.container {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr 1fr;
+.layout {
+    display: flex;
+    align-items: flex-start;
     gap: 20px;
-    max-width: 1200px;
+    max-width: 1400px;
     width: 100%;
     margin: 0 auto;
     padding: 0 20px;
     flex: 1;
 }
 
-@media (max-width: 900px) {
+.main-area {
+    flex: 1;
+    min-width: 0;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+@media (max-width: 1150px) {
     .container {
         grid-template-columns: 1fr;
     }
@@ -141,11 +153,17 @@ body {
 }
 
 .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: 10px 16px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
     font-weight: 600;
+    text-decoration: none;
 }
 
 .btn-primary {
@@ -193,14 +211,15 @@ body {
 }
 
 .task-name {
-    background: none;
-    border: none;
     color: var(--text-color);
-    font-family: inherit;
     font-size: 1rem;
     font-weight: bold;
     text-align: left;
-    cursor: pointer;
+    text-decoration: none;
+}
+
+.task-name:hover {
+    text-decoration: underline;
 }
 
 .task-meta {
@@ -227,13 +246,20 @@ body {
 }
 
 .btn-small {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: 6px 10px;
     min-height: 32px;
+    font-family: inherit;
     font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 1.2;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     color: #fff;
+    text-decoration: none;
 }
 
 .btn-done { background-color: var(--done-color); }
@@ -276,39 +302,11 @@ body {
     transition: background-color 0.3s;
 }
 
-.task-title input[type="checkbox"] {
-    pointer-events: none;
-    cursor: default;
-}
 
 .header-actions {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-}
-
-.btn-theme:disabled,
-.btn:disabled {
-    opacity: 0.75;
-    cursor: not-allowed;
-}
-
-.field-help {
-    margin-top: 5px;
-    font-size: 0.85rem;
-    color: var(--text-muted);
-}
-
-.field-error {
-    margin-top: 5px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--error-color);
-}
-
-.form-group input[aria-invalid="true"] {
-    border-color: var(--error-color);
-    border-width: 2px;
 }
 
 .image-field {
@@ -321,13 +319,6 @@ body {
 .image-field legend {
     padding: 0 6px;
     font-weight: 600;
-}
-
-.image-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 10px;
 }
 
 .file-label {
@@ -343,12 +334,10 @@ body {
     font-family: inherit;
 }
 
-.camera-box,
 .image-preview-box {
     margin-top: 10px;
 }
 
-.camera-box video,
 .image-preview-box img,
 .detail-image {
     display: block;
@@ -358,12 +347,6 @@ body {
     margin-bottom: 10px;
     border: 1px solid var(--border-color);
     border-radius: 6px;
-    background-color: #000;
-}
-
-.image-preview-box img,
-.detail-image {
-    background-color: transparent;
 }
 
 .detail-image {
@@ -417,12 +400,25 @@ main:focus {
     .btn,
     .btn-theme,
     .btn-small,
+    .nav-link,
     .task-name {
         min-height: 44px;
     }
 
     .btn-small {
         min-width: 44px;
+    }
+}
+
+@media (max-width: 800px) {
+    .layout {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .sidebar {
+        flex: none;
+        width: 100%;
     }
 }
 
@@ -454,4 +450,141 @@ main:focus {
     .btn-small {
         border: 1px solid ButtonText;
     }
+}
+
+/* ---------- Sidebar menu ---------- */
+.sidebar {
+    flex: 0 0 210px;
+    padding: 20px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    border-radius: 6px;
+    color: var(--text-color);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    background-color: var(--tag-bg);
+}
+
+.nav-link.active {
+    background-color: var(--primary-color);
+    color: var(--footer-text);
+}
+
+.count {
+    min-width: 24px;
+    padding: 1px 8px;
+    border-radius: 999px;
+    background-color: rgba(127, 127, 127, 0.2);
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.user-switch {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-color);
+}
+
+.user-switch label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.user-switch select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--input-border);
+    border-radius: 4px;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+/* ---------- Messages and small form parts ---------- */
+.flash {
+    margin-bottom: 20px;
+    padding: 12px 16px;
+    border: 1px solid var(--border-color);
+    border-left-width: 5px;
+    border-radius: 6px;
+    background-color: var(--card-bg);
+    font-weight: 600;
+}
+
+.panel .flash {
+    margin-bottom: 15px;
+}
+
+.flash-success {
+    border-left-color: var(--done-color);
+}
+
+.flash-error {
+    border-left-color: var(--error-color);
+    color: var(--error-color);
+}
+
+.flash ul {
+    padding-left: 18px;
+}
+
+.check-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-group.check-group label,
+.check-group label {
+    display: inline;
+    margin: 0;
+    font-weight: 600;
+}
+
+.check-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+}
+
+.toggle-form {
+    display: flex;
+    align-items: center;
+}
+
+.toggle-form input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.toggle-form input[type="checkbox"]:disabled {
+    cursor: not-allowed;
+}
+
+.inline-form {
+    display: inline;
 }
