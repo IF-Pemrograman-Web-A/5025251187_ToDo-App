@@ -6,57 +6,77 @@
 | Farrel Rizqi Pangestu | 5025251187 |
 
 ## Deskripsi
+Todo App berbasis PHP dan MySQL dengan dua menu, **Personal** (tugas pribadi) dan **Shared** (tugas yang dibagikan ke seluruh organisasi).
 
-Website To-do list tugas kuliah menggunakan HTML, CSS, dan JavaScript. Data tugas disimpan di IndexedDB, preferensi tema di localStorage, gambar tugas bisa diambil lewat kamera (Media Capture), pengingat memakai Service Worker, dan antarmuka dibuat accessible.
+## Struktur File
+| File beserta Fungsinya |
+
+ `index.php` = Pintu masuk, mengambil data lalu menyusun halaman 
+
+ `config.php` = Konfigurasi dan koneksi database (PDO) 
+
+ `functions.php` = Fungsi bantu: query, validasi, upload gambar, CSRF 
+
+ `actions.php` = Memproses create, update, delete, toggle, dan ganti user 
+
+ `header.php`, `menu-bar.php`, `content.php`, `footer.php` = Bagian layout halaman 
+
+ `task-form.php`, `task-list.php`, `task-detail.php` | Komponen di dalam `content.php` 
+
+ `data.sql` = Struktur database dan data dummy 
+
+ `style.css`, `script.js` = Tampilan dan interaksi (dark mode, checkbox, konfirmasi hapus) 
+
+ `uploads/` = Folder gambar yang diunggah 
 
 ## Struktur Website
 **1. Header**
 
-Bagian paling atas website yang menampilkan judul aplikasi.
+Menampilkan judul aplikasi dan tombol toggle light/dark mode (disimpan di localStorage).
 
-**2. Task List (Daftar Tugas)**
+**2. Sidebar Menu**
 
-Menampilkan daftar tugas dengan checkbox status, tag, deadline, serta tombol Mark as Done, Edit, dan Delete.
+Berisi menu **Personal** dan **Shared** beserta jumlah tugasnya, serta pilihan user ("Signed in as") untuk mencoba berbagi tugas antar pengguna.
 
-**3. Task Details (Detail Tugas)**
+**3. Create / Edit Task**
 
-Menampilkan detail tugas yang dipilih dari daftar.
+Form untuk menambah atau mengedit tugas: Title, Tag, Deadline, Description, Share with the organization, dan Image.
 
-**4. Create New Task (Form Tambah Tugas)**
+**4. Task List**
 
-Form untuk menambah tugas baru, atau mengedit tugas yang dipilih. Input diambil lewat JavaScript dan langsung tampil di list.
+Daftar tugas menurut menu yang aktif, dengan checkbox selesai, tombol Edit dan Delete (hanya untuk pemilik tugas).
 
-**5. Footer**
+**5. Task Details**
 
-Bagian paling bawah yang menampilkan identitas pembuat dan keterangan tugas.
+Detail tugas yang dipilih, termasuk pemilik, visibilitas, dan gambar.
 
-**6. Toggle Light/Dark Mode**
+**6. Footer**
 
-Komponen di ujung kanan atas yang dapat mengubah tampilan antarmuka antara mode terang dan mode gelap. background dan elemen tampilan berubah menjadi warna gelap/terang, sesuai preferensi pengguna.
+Identitas pembuat dan keterangan tugas.
 
-**7. Web Storage**
+**7. Menu Bar Personal dan Shared**
 
-Data to-do (termasuk gambar) disimpan di IndexedDB (todoAppDB), dan preferensi light/dark mode disimpan di localStorage (todo-theme). Data dan tema tetap ada setelah di-refresh.
+Personal menampilkan tugas milik user yang sedang aktif, Shared menampilkan semua tugas yang dibagikan beserta nama pemiliknya.
 
-**8. Media Capture API**
+**8. Modular PHP**
 
-Field Image pada form dapat mengambil foto langsung lewat tombol Buka Kamera (getUserMedia) atau input file dengan atribut capture. Gambar ditampilkan di Task Details.
+HTML dipecah menjadi beberapa file PHP (`header.php`, `menu-bar.php`, `content.php`, `config.php`, dan lainnya) yang digabung lewat `include`/`require`.
 
-**9. Service Worker**
+**9. Database**
 
-sw.js menyimpan app shell di cache agar bisa dibuka offline. Field Notification Time memunculkan notifikasi lewat service worker saat waktunya tiba (aplikasi harus terbuka dan izin notifikasi diberikan). Jalankan lewat localhost atau HTTPS.
+Struktur tabel `users` dan `tasks` beserta data dummy disimpan di `data.sql`.
 
-**10. Accessibility**
+**10. CRUD dengan PHP**
 
-Skip link, landmark dan heading terstruktur, label dan pesan error yang jelas, aria-label serta aria-live untuk pembaca layar, fokus keyboard yang terlihat, kontras warna sesuai WCAG AA, dan dukungan prefers-reduced-motion.
+Create, Read, Update, dan Delete dijalankan dengan PHP dan PDO (prepared statement), ditambah penanda selesai lewat checkbox. Hanya pemilik tugas yang dapat mengubah atau menghapusnya.
+
+**11. File Handling**
+
+Gambar tugas diunggah lewat PHP (validasi tipe dan ukuran maks. 2 MB, nama file acak), disimpan di folder `uploads/`, dan ikut terhapus saat tugas dihapus atau gambarnya diganti.
 
 ## Desktop Preview
-- <img width="1919" height="988" alt="image" src="https://github.com/user-attachments/assets/dc818c6b-2b49-438c-bfb1-7cabd3a0e16f" />
-- <img width="1919" height="987" alt="image" src="https://github.com/user-attachments/assets/745805f9-e717-4fe3-aae8-921e37315ef9" />
-
 
 ## Mobile Preview
-- <img width="334" height="722" alt="image" src="https://github.com/user-attachments/assets/00e9e21b-6be2-4bdf-aaf6-3d167e828a19" />
 
 ## Setelah di-Refresh
 - <img width="1918" height="984" alt="image" src="https://github.com/user-attachments/assets/c48119c1-fe54-44b5-9640-a33ba5aae7f2" />
