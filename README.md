@@ -94,10 +94,10 @@ Gambar tugas diunggah lewat PHP (validasi tipe dan ukuran maks. 2 MB, nama file 
 
 | Resource | Strategi | Alasan |
 | --- | --- | --- |
-| `offline.html`, manifest, ikon | Precache + Cache First | Tidak berubah antar user, harus selalu ada saat offline |
+| `offline.html`, manifest, ikon | Precache + Cache First | Tidak berubah antar user & harus selalu ada saat offline |
 | `style.css`, `app.js` | Precache + Stale-While-Revalidate | Cepat dari cache, tetap diperbarui bila kode berubah |
 | Halaman PHP (`index.php?...`) | Network First, lalu cache, lalu `offline.html` | Data tugas dari MySQL harus terbaru saat online |
-| Gambar di `uploads/` | Cache First (maks. 30 item) | Jarang berubah (nama file acak), hemat bandwidth |
+| Gambar di `uploads/` | Cache First (maks. 30 item) | Jarang berubah, hemat bandwidth |
 | Request POST (create/update/delete/toggle) | Tidak di-cache | Perubahan data butuh server |
 
 Workbox tidak dipakai, seluruh strategi ditulis dengan Cache API bawaan browser.
