@@ -1,0 +1,22 @@
+{
+  "name": "Farrel's To Do - Organizational Todo App",
+  "short_name": "My To Do",
+  "description": "Todo App personal dan shared untuk tugas kuliah, bisa dipakai offline.",
+  "id": "./index.php",
+  "start_url": "./index.php?page=personal",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "lang": "id",
+  "background_color": "#f4f6f8",
+  "theme_color": "#2563eb",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Personal Tasks", "url": "./index.php?page=personal", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Shared Tasks", "url": "./index.php?page=shared", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}
