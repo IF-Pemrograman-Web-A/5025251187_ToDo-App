@@ -6,7 +6,7 @@
 | Farrel Rizqi Pangestu | 5025251187 |
 
 ## Deskripsi
-Todo App berbasis PHP dan MySQL dengan dua menu, **Personal** (tugas pribadi) dan **Shared** (tugas yang dibagikan ke seluruh organisasi).
+Todo App berbasis PHP dan MySQL dengan dua menu, **Personal** (tugas pribadi) dan **Shared** (tugas yang dibagikan ke seluruh organisasi). Pada tugas E05 (*The Offline Abyss*), aplikasi ditingkatkan menjadi **Progressive Web App (PWA)**: bisa di-install seperti aplikasi biasa dan tetap menampilkan halaman yang pernah dibuka saat offline.
 
 ## Struktur File
 | File beserta Fungsinya |
@@ -25,14 +25,22 @@ Todo App berbasis PHP dan MySQL dengan dua menu, **Personal** (tugas pribadi) da
 
  `data.sql` = Struktur database dan data dummy 
 
- `style.css`, `script.js` = Tampilan dan interaksi (dark mode, checkbox, konfirmasi hapus) 
+ `style.css`, `app.js` = Tampilan dan interaksi (dark mode, checkbox, konfirmasi hapus, registrasi Service Worker, tombol install, indikator offline) 
+
+ `manifest.webmanifest` = Web App Manifest (nama, warna, ikon, mode standalone) 
+
+ `sw.js` = Service Worker (precache app shell dan strategi caching per resource) 
+
+ `offline.html` = Halaman fallback saat offline dan halaman belum tersimpan 
+
+ `icons/` = Ikon PWA ukuran 192x192, 512x512, dan maskable 
 
  `uploads/` = Folder gambar yang diunggah 
 
 ## Struktur Website
 **1. Header**
 
-Menampilkan judul aplikasi dan tombol toggle light/dark mode (disimpan di localStorage).
+Menampilkan judul aplikasi, tombol **Install App** (muncul saat aplikasi bisa di-install), dan tombol toggle light/dark mode (disimpan di localStorage).
 
 **2. Sidebar Menu**
 
@@ -74,6 +82,34 @@ Create, Read, Update, dan Delete dijalankan dengan PHP dan PDO (prepared stateme
 
 Gambar tugas diunggah lewat PHP (validasi tipe dan ukuran maks. 2 MB, nama file acak), disimpan di folder `uploads/`, dan ikut terhapus saat tugas dihapus atau gambarnya diganti.
 
+**12. Web App Manifest dan Icons**
+
+`manifest.webmanifest` berisi nama aplikasi, `start_url`, mode `standalone`, warna tema, dan tiga ikon (192x192, 512x512, maskable). File ini dihubungkan di `header.php` lewat `<link rel="manifest">`.
+
+**13. Service Worker dan Precache**
+
+`sw.js` menyimpan app shell (`offline.html`, `style.css`, `app.js`, manifest, dan ikon) ke cache saat event `install`. Halaman `index.php?page=personal` dan `index.php?page=shared` ikut disimpan bila server sedang hidup.
+
+**14. Strategi Caching per Resource**
+
+| Resource | Strategi | Alasan |
+| --- | --- | --- |
+| `offline.html`, manifest, ikon | Precache + Cache First | Tidak berubah antar user, harus selalu ada saat offline |
+| `style.css`, `app.js` | Precache + Stale-While-Revalidate | Cepat dari cache, tetap diperbarui bila kode berubah |
+| Halaman PHP (`index.php?...`) | Network First, lalu cache, lalu `offline.html` | Data tugas dari MySQL harus terbaru saat online |
+| Gambar di `uploads/` | Cache First (maks. 30 item) | Jarang berubah (nama file acak), hemat bandwidth |
+| Request POST (create/update/delete/toggle) | Tidak di-cache | Perubahan data butuh server |
+
+Workbox tidak dipakai, seluruh strategi ditulis dengan Cache API bawaan browser.
+
+**15. Tombol Install**
+
+Tombol **Install App** di header muncul saat browser mengirim event `beforeinstallprompt`. Saat diklik, dialog install ditampilkan, dan tombol hilang setelah aplikasi ter-install.
+
+**16. Halaman Offline dan Indikator Offline**
+
+Saat tidak ada koneksi, banner oranye muncul di bawah header. Halaman yang pernah dibuka tetap tampil dari cache, sedangkan halaman yang belum pernah dibuka menampilkan `offline.html`. Karena data ada di MySQL, saat offline tugas hanya bisa dilihat, belum bisa ditambah atau diubah.
+
 ## Desktop Preview
 - Light Mode
 <img width="1919" height="1031" alt="image" src="https://github.com/user-attachments/assets/4f170a7d-5862-4a1b-8db6-0cccdc9e8e30" />
@@ -92,3 +128,21 @@ Gambar tugas diunggah lewat PHP (validasi tipe dan ukuran maks. 2 MB, nama file 
 
 - Serta menambahkan ToDo
 <img width="1385" height="428" alt="image" src="https://github.com/user-attachments/assets/b3af7a6e-150b-4665-85dd-b4d32eb7d20e" />
+
+##Screenshot DevTools
+- Manifest terbaca, tiga ikon tampil (Application > Manifest)
+<img width="1055" height="799" alt="image" src="https://github.com/user-attachments/assets/e82dda87-f715-4416-81f0-b4e91a2e1e89" />
+
+- Service Worker `sw.js` berstatus *activated and is running* (Application > Service workers)
+<img width="1093" height="803" alt="image" src="https://github.com/user-attachments/assets/419bd04f-43d5-494e-a920-41a5499c42bc" />
+
+- Cache storage berisi `todo-shell-v1` dan `todo-pages-v1` (Application > Cache storage)
+<img width="1697" height="798" alt="image" src="https://github.com/user-attachments/assets/40b4f61d-1bdc-4d40-8c39-d036deb1aff3" />
+<img width="1625" height="807" alt="image" src="https://github.com/user-attachments/assets/0b747177-2745-4268-9046-7b0b601a5c87" />
+
+- Tombol **Install App** dan aplikasi terbuka dalam mode standalone
+<img width="1521" height="800" alt="image" src="https://github.com/user-attachments/assets/74bdde62-dada-4f63-b312-3487263874a0" />
+
+##Offline
+<img width="982" height="618" alt="WhatsApp Image 2026-11-02 at 19 51 26" src="https://github.com/user-attachments/assets/a7e584ba-6696-4f51-9448-bf1c31f73d66" />
+
