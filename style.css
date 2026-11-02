@@ -588,3 +588,17 @@ main:focus {
 .inline-form {
     display: inline;
 }
+
+/* ---------- PWA (E05) ---------- */
+[hidden] {
+    display: none !important;
+}
+
+.net-status {
+    margin: 0;
+    padding: 10px 20px;
+    background: #92400e;
+    color: #ffffff;
+    text-align: center;
+    font-size: 0.95rem;
+}
